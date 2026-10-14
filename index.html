@@ -1,0 +1,48 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="icon" href="data:,"><title>Moonlit Shadow: The Pickled Scroll</title>
+<style>
+html,body{margin:0;height:100%;overflow:hidden;background:#000;font-family:Georgia,serif;color:#eee}
+#hud{position:fixed;inset:0;pointer-events:none}
+.panel{position:absolute;background:rgba(10,10,25,.55);padding:8px 12px;border-radius:8px;border:1px solid #445}
+#tl{top:12px;left:12px;font-size:15px;line-height:1.5}
+#meterbox{top:12px;right:12px;width:220px;text-align:center}
+#meter{height:12px;background:#222;border-radius:6px;overflow:hidden;margin-top:4px}
+#meterfill{height:100%;width:0;background:#4c8}
+#obj{bottom:14px;left:50%;transform:translateX(-50%);font-size:17px}
+#toast{position:absolute;top:22%;width:100%;text-align:center;font-size:22px;text-shadow:0 0 6px #000;transition:opacity .4s}
+#cross{position:absolute;left:50%;top:50%;width:8px;height:8px;margin:-4px;border:2px solid #fff8;border-radius:50%}
+#cross.ok{border-color:#5f5}
+.screen{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(#13183acc,#000e);text-align:center}
+.screen h1{font-size:54px;margin:0 0 4px;color:#e9d9a6;letter-spacing:3px;text-shadow:0 0 18px #c33}
+.screen h3{margin:0 0 18px;color:#aab;font-weight:normal;font-style:italic}
+.screen table{margin:10px auto;font-size:16px;border-spacing:14px 3px}
+.screen td:first-child{text-align:right;color:#e9d9a6}
+button{font:20px Georgia;padding:10px 30px;margin:8px;background:#7a1f1f;color:#fff;border:2px solid #e9d9a6;border-radius:8px;cursor:pointer}
+button:hover{background:#a33}
+.hidden{display:none!important}
+#rank{font-size:30px;color:#ffcf6a;margin:10px}
+</style>
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js"}}</script>
+</head><body>
+<div id="hud" class="hidden">
+ <div id="tl" class="panel"></div>
+ <div id="meterbox" class="panel"><span id="mlabel">HIDDEN</span><div id="meter"><div id="meterfill"></div></div></div>
+ <div id="obj" class="panel"></div>
+ <div id="toast"></div><div id="cross"></div>
+</div>
+<div id="title" class="screen">
+ <h1>MOONLIT SHADOW</h1><h3>Level 1 — The Pickled Scroll of Grandmaster Umeboshi</h3>
+ <p style="max-width:560px;color:#ccd">The Grandmaster's sacred scroll (it is a pickle recipe) has been stolen by the Lord of Very Ordinary Rice. Sneak across the rooftops, grab it from the far pagoda, and escape back to the town gate.</p>
+ <table>
+ <tr><td>WASD</td><td>Move &nbsp;·&nbsp; Mouse: look</td></tr>
+ <tr><td>Space</td><td>Jump</td></tr>
+ <tr><td>Shift / C</td><td>Crouch-sneak (slow &amp; quiet)</td></tr>
+ <tr><td>Right-click / E</td><td>Grappling hook (aim at a roof)</td></tr>
+ <tr><td>F</td><td>Takedown from behind</td></tr>
+ <tr><td>M</td><td>Mute &nbsp;·&nbsp; Esc: pause</td></tr>
+ </table>
+ <button id="startBtn">Begin the Mission</button>
+</div>
+<div id="pause" class="screen hidden"><h1>PAUSED</h1><h3>The ninja is having a little snack.</h3><button id="resumeBtn">Resume</button></div>
+<div id="end" class="screen hidden"><h1 id="endTitle">MISSION COMPLETE</h1><div id="rank"></div><table id="stats"></table><button id="againBtn">Play Again</button></div>
+<script type="module" src="game.js"></script>
+</body></html>
